@@ -47,9 +47,9 @@ class Alert implements Output
             if (!request()->ajax()) {
                 $content = $content . $outputContent;
             } else {
-                $jsonResponseContent = json_decode($content);
+                $jsonResponseContent = json_decode($content, true);
 
-                $jsonResponseContent->laravelQueryDetector = $outputContent;
+                $jsonResponseContent['laravelQueryDetector'] = $outputContent;
 
                 $content = json_encode($jsonResponseContent);
             }
